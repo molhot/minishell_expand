@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satushi <satushi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:37:31 by satushi           #+#    #+#             */
-/*   Updated: 2023/02/18 05:23:56 by satushi          ###   ########.fr       */
+/*   Updated: 2023/02/21 17:44:07 by kazuki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	expand(t_node *node)
 		}
 		if (node->command->redirect != NULL)
 		{
-			redirect = *(node->command->redirect);
+			redirect = node->command->redirect;
 			while (redirect != NULL)
 			{
 				if (redirect->type != HEREDOC)

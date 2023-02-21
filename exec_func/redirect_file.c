@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satushi <satushi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:32:50 by satushi           #+#    #+#             */
-/*   Updated: 2023/02/18 05:19:58 by satushi          ###   ########.fr       */
+/*   Updated: 2023/02/21 17:44:37 by kazuki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ready_redirectionfile(t_node *node)
 
 	while (node != NULL)
 	{
-		redirect = *(node->command->redirect);
+		redirect = node->command->redirect;
 		while (redirect != NULL)
 		{
 			if (redirect->type == IN)
@@ -70,7 +70,7 @@ void	redirect_reconect(t_command *command)
 
 	if (command->redirect == NULL)
 		return ;
-	redirect = *(command->redirect);
+	redirect = command->redirect;
 	while (redirect != NULL)
 	{
 		if (redirect->type == IN || redirect->type == HEREDOC)

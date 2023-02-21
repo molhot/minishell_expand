@@ -59,9 +59,15 @@ void    test_parse(void)
         free_node(n);
         free_token(t);
 
-//      line = "< hoge";
-//      t = tokenizer(line);
-//      n = parse(t);
+        line = "< hoge";
+        t = tokenizer(line);
+        n = parse(t);
+        assert(strcmp((*n->command->redirect)->file_path, "hoge") == 0);
+        free((*n->command->redirect)->file_path);
+        free((*n->command->redirect));
+        free(n->command->redirect);
+        free_token(t);
+      
 //
 //      parse_redirect(&n->command->redirect, &t);
 //      assert(strcmp(n->command->redirect->file_path, "hoge") == 0);

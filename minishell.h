@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/02/19 07:59:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/02/21 17:42:05 by kazuki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef enum e_token_kind {
 }            t_token_kind;
 
 struct s_token {
-    char         *word;
-    t_token_kind kind;
-    t_token      *next;
+	char			*word;
+	t_token_kind	kind;
+	t_token			*next;
 };
 
 /**** simple command node ****/
@@ -80,7 +80,7 @@ typedef struct	s_redirect
 typedef struct s_command
 {
 	t_token		 	*args;
-	t_redirect		**redirect;
+	t_redirect		*redirect;
 	int				in_fd[2];
 	int				out_fd[2];
 	int				now_in;
