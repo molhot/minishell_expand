@@ -23,7 +23,7 @@ void	ms_cd(char *line, t_command *command)
 	commands = command_to_array(command);
 	if (!commands)
 		fatal_error("malloc");
-	if (commands[1] == NULL || commands[2] != NULL || strchr(commands[1], '~'))
+	if (commands[1] == NULL || commands[2] != NULL || ft_strchr(commands[1], '~'))
 	{
 		free_commands(commands);
 		ft_putendl_fd("cd with only a relative or absolute path", 2);
