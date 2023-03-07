@@ -101,7 +101,10 @@ int	main(void)
 		signal(SIGQUIT, SIG_IGN);
 		line = readline("minishell$ ");
 		if (line == NULL)
-			break ;
+		{
+			printf("exit\n");
+			exit(0);
+		}
 		if (*line != 0)
 		{
 			if (*line)
@@ -110,5 +113,4 @@ int	main(void)
 		}
 		free(line);
 	}
-	exit(0);
 }
