@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:39:08 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/01 00:05:21 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/08 20:27:11 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,25 @@ void	child_process(t_node *node, char *path, char **argv, char **environ)
 
 static void	redirectfile_check(t_redirect *redirect)
 {
+	int	fd;
 	if (redirect->file_path == NULL || redirect->ambigous == true)
 		printf("minishell: %s: ambiguous redirect\n", \
 		redirect->file_path);
 	else
-		printf("minishell: %s: No such file or directory\n", \
-		redirect->file_path);
+	{
+		if (redirect->type == IN)
+			fd = open(redirect->file_path, O_RDONLY);
+		if (redirect->type == OUT)
+			fd = open(redirect->file_path, \
+			O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		if (redirect->type == APPEND)
+			fd = open(redirect->file_path, \
+			O_CREAT | O_WRONLY | O_APPEND, 0644);
+		if (fd != -1)
+			close (fd);
+		write(2, "minishell: ", 12);
+		perror(redirect->file_path);
+	}
 	g_env->err_status = 1;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:03:13 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/05 17:16:41 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/08 15:57:23 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,11 @@ void	append_char(char **s, char c)
 
 void	append_single(char **args, char **new)
 {
-	//bool	noaction;
-
-	//noaction = true;
 	while (**args != '\'')
 	{
-		//noaction = false;
 		append_char(&(*new), **args);
 		(*args)++;
 	}
-	//if (noaction == true)
-		//*new = ft_strdup("");
 	(*args)++;
 }
 
@@ -57,12 +51,8 @@ static bool	slush_char_ch(char c)
 
 void	append_double(char **args, char **new)
 {
-	//bool	noaction;
-
-	//noaction = true;
 	while (**args != '\"')
 	{
-		//noaction = false;
 		if (**args == '\\' && slush_char_ch(*(*args + 1)) == true)
 		{
 			(*args)++;
@@ -77,7 +67,5 @@ void	append_double(char **args, char **new)
 			(*args)++;
 		}
 	}
-	//if (noaction == true)
-		//*new = ft_strdup("");
 	(*args)++;
 }
