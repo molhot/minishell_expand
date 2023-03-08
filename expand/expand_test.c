@@ -3,41 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   expand_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:59:01 by marvin            #+#    #+#             */
-/*   Updated: 2023/02/26 20:59:09 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:35:36 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+// #include "../minishell.h"
 
-void	append_char(char **s, char c)
-{
-	size_t	size;
-	char	*new;
+// t_map	*g_env;
 
-	size = 2;
-	if (*s)
-		size += ft_strlen(*s);
-	new = malloc(size);
-	if (new == NULL)
-		fatal_error("malloc");
-	if (*s)
-		ft_strlcpy(new, *s, size);
-	new[size - 2] = c;
-	new[size - 1] = '\0';
-	if (*s)
-		free(*s);
-	*s = new;
-}
+// int	main(void)
+// {
+// 	char	*line;
 
-int	main(void)
-{
-	char	*line;
-
-	line = strdup("echo hoge | cat");
-	append_char(&line, '|');
-	append_char(&line, 'a');
-	free(line);
-}
+// 	line = "\"'\"hoge\"'\" > \"\"'hoge'\"\"";
+// 	t_token *t = tokenizer(line);
+// 	t_node *n = parse(t);
+// 	expand(n);
+// 	printf("%s\n", n->command->args->word);
+// 	printf("%s\n", (*n->command->redirect)->file_path);
+// }

@@ -19,14 +19,18 @@ char	*expand_args_redirect(char *args, char *args_free)
 	new_word = NULL;
 	while (*args != '\0')
 	{
-		if (*args == '\'' || *args == '\"')
+		if (*args == '\\')
+		{
+			args++;
+			append_char(&new_word, *args++);
+		}
+		if ((*args == '\'' || *args == '\"') && *(args + 1) != '\0')
 		{
 			args++;
 			if (*(args - 1) == '\'')
 				append_single(&args, &new_word);
 			else if (*(args - 1) == '\"')
 				append_double(&args, &new_word);
-			args++;
 		}
 		else if (*args == '$' && *(args + 1) == '?')
 			expand_dolleeques(&new_word, &args, args);

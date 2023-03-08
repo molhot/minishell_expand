@@ -112,7 +112,7 @@ char	*map_get(t_map *map, const char *name)
 	itr = map->item_head;
 	while (itr != NULL)
 	{
-		if (strcmp(itr->name, name) == 0)
+		if (ft_strcmp(itr->name, name) == 0)
 			return (itr->value);
 		itr = itr->next;
 	}

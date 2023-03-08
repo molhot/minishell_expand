@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:27:43 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/04 21:22:22 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/08 19:57:54 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ int	main(void)
 		signal(SIGQUIT, SIG_IGN);
 		line = readline("minishell$ ");
 		if (line == NULL)
-			break ;
+		{
+			printf("exit\n");
+			exit(0);
+		}
 		if (*line != 0)
 		{
 			if (*line)
@@ -110,5 +113,4 @@ int	main(void)
 		}
 		free(line);
 	}
-	exit(0);
 }

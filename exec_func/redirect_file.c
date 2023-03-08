@@ -41,7 +41,7 @@ static	int	heredoc(const char *deli)
 			free(line);
 			break ;
 		}
-		dprintf(pfd[1], "%s\n", line);
+		ft_putendl_fd(line, pfd[1]);
 		free(line);
 	}
 	close (pfd[1]);

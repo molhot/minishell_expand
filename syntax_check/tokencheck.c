@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/04 21:23:52 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/08 19:19:30 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,42 @@ bool	only_twowd(char	*str)
 	return (false);
 }
 
+size_t	not_escaped(char *args)
+{
+	size_t	position;
+
+	position = 0;
+	while (args[position] != '\0')
+	{
+		if (args[position] == '\'' || args[position] == '\"')
+			if (position != 0 && args[position - 1] != '\\')
+				return (true);
+		args++;
+	}
+	return (false);
+}
+
+static bool	show_error(char *s, size_t charlen)
+{
+	if (s[charlen - 1] == '\\')
+	{
+		printf("bash: syntax error near newline `%s'\n", "\\n");
+		return (false);
+	}
+	printf("bash: syntax error near quote `%s'\n", s);
+	return (false);
+}
+
 bool	wdcheck(char **str)
 {
 	char	type;
 	char	*tmp_str;
 
 	tmp_str = *str;
-	if (ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL)
+	if (tmp_str[ft_strlen(*str) - 1] == '\\')
+		return (show_error(tmp_str, ft_strlen(tmp_str)));
+	if ((ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL) \
+	&& not_escaped(*str) == true)
 	{
 		while (**str != '\'' && **str != '\"')
 			(*str)++;
@@ -39,10 +68,7 @@ bool	wdcheck(char **str)
 			(*str)++;
 		}
 		if (**str == '\0')
-		{
-			printf("bash: syntax error near quote `%s'\n", tmp_str);
-			return (false);
-		}
+			return (show_error(tmp_str, ft_strlen(tmp_str)));
 	}
 	return (true);
 }

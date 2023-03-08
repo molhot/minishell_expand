@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:16:50 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/02 20:21:55 by kazuki           ###   ########.fr       */
+/*   Updated: 2023/03/08 19:04:32 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	prepare_pipe(t_node *node)
 
 void	prepare_pipe_child(t_node *node)
 {
-	close(node->command->out_fd[0]);
+	if (node->command->out_fd[0] != -1)
+		close(node->command->out_fd[0]);
 	dup2(node->command->in_fd[0], STDIN_FILENO);
 	if (node->command->in_fd[0] != STDIN_FILENO)
 		close(node->command->in_fd[0]);
