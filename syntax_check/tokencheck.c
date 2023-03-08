@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/04 21:23:52 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/08 13:28:39 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,30 @@ bool	only_twowd(char	*str)
 	return (false);
 }
 
+size_t	not_escaped(char *args)
+{
+	while (*args != '\0')
+	{
+		if (*args == '\'' || *args == '\"')
+			if (*(args - 1) != '\\')
+				return (true);
+		args++;
+	}
+	return (false);
+}
+
 bool	wdcheck(char **str)
 {
 	char	type;
 	char	*tmp_str;
 
 	tmp_str = *str;
-	if (ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL)
+	if (tmp_str[ft_strlen(*str) - 1] == '\\')
+	{
+		printf("bash: syntax error near newline `%s'\n", "\\n");
+		return (false);
+	}
+	if ((ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL) && not_escaped(*str) == true)
 	{
 		while (**str != '\'' && **str != '\"')
 			(*str)++;
