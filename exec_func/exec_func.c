@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:39:08 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/08 20:27:11 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/08 20:36:47 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	child_process(t_node *node, char *path, char **argv, char **environ)
 static void	redirectfile_check(t_redirect *redirect)
 {
 	int	fd;
+
 	if (redirect->file_path == NULL || redirect->ambigous == true)
 		printf("minishell: %s: ambiguous redirect\n", \
 		redirect->file_path);

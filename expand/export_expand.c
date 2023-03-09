@@ -71,6 +71,31 @@ void	append_double_export(char **args, char **new)
 	(*args)++;
 }
 
+// else if (*args == '$' && *(args + 1) == '\0')
+// 	append_char(&new_word, *args++);
+// else if (*args == '$' && (*(args + 1) == '\'' 
+// || *(args + 1) == '\"'))
+// 	args++;
+// else if (*args == '$' && *(args + 1) == '?')
+// 	expand_dolleeques(&new_word, &args, args);
+// else if (*args == '$')
+// 	expand_doller(&new_word, &args, args);
+
+static void	switch_doller(char **new_word, char **args)
+{
+	if (**args == '$' && *(*args + 1) == '\0')
+	{
+		append_char(&(*new_word), **args);
+		(*args)++;
+	}
+	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
+		(*args)++;
+	else if (**args == '$' && *(*args + 1) == '?')
+		expand_dolleeques(&(*new_word), &(*args), *args);
+	else if (**args == '$')
+		expand_doller(&(*new_word), &(*args), *args);
+}
+
 char	*expand_args_expote(char *args, char *args_free)
 {
 	char	*new_word;
@@ -91,13 +116,8 @@ char	*expand_args_expote(char *args, char *args_free)
 			else if (*(args - 1) == '\"')
 				append_double_export(&args, &new_word);
 		}
-		else if (*args == '$' && (*(args + 1) == '\0' || \
-		*(args + 1) == '\'' || *(args + 1) == '\"'))
-			append_char(&new_word, *args++);
-		else if (*args == '$' && *(args + 1) == '?')
-			expand_dolleeques(&new_word, &args, args);
 		else if (*args == '$')
-			expand_doller(&new_word, &args, args);
+			switch_doller(&new_word, &args);
 		else
 			append_char(&new_word, *args++);
 	}

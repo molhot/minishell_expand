@@ -59,6 +59,31 @@ void	expand_quote(t_token *token)
 	}
 }
 
+// else if (*args == '$' && (*(args + 1) == '\0' ||
+// *(args + 1) == '\'' || *(args + 1) == '\"'))
+// 	append_char(&new_word, *args++);
+// else if (*args == '$' && *(args + 1) == '?')
+// 	expand_dolleeques(&new_word, &args, args);
+// else if (*args == '$')
+// 	expand_doller(&new_word, &args, args);
+
+void	switch_quote_doller(char **args, char **newword)
+{
+	char	*tmp;
+
+	tmp = *args;
+	if (*tmp == '$' && (*(tmp + 1) == '\0' || \
+	*(tmp + 1) == '\'' || *(tmp + 1) == '\"'))
+	{
+		append_char(&(*newword), *tmp);
+		(*args)++;
+	}
+	else if (*tmp == '$' && *(tmp + 1) == '?')
+		expand_dolleeques(&(*newword), &(*args), tmp);
+	else if (*tmp == '$')
+		expand_doller(&(*newword), &(*args), tmp);
+}
+
 char	*expand_args_quote(char *args, char *args_free)
 {
 	char	*new_word;
@@ -79,13 +104,8 @@ char	*expand_args_quote(char *args, char *args_free)
 			else if (*(args - 1) == '\"')
 				append_double(&args, &new_word);
 		}
-		else if (*args == '$' && (*(args + 1) == '\0' || \
-		*(args + 1) == '\'' || *(args + 1) == '\"'))
-			append_char(&new_word, *args++);
-		else if (*args == '$' && *(args + 1) == '?')
-			expand_dolleeques(&new_word, &args, args);
 		else if (*args == '$')
-			expand_doller(&new_word, &args, args);
+			switch_quote_doller(&args, &new_word);
 		else
 			append_char(&new_word, *args++);
 	}

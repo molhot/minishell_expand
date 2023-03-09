@@ -12,6 +12,26 @@
 
 #include "../minishell.h"
 
+// {
+		// 	args++;
+		// 	if (*(args - 1) == '\'')
+		// 		append_single(&args, &new_word);
+		// 	else if (*(args - 1) == '\"')
+		// 		append_double(&args, &new_word);
+		// }
+
+void	quote_append(char **args, char **new_word)
+{
+	char	*tmp;
+
+	(*args)++;
+	tmp = *args;
+	if (*(tmp - 1) == '\'')
+		append_single(&(*args), &(*new_word));
+	else if (*(tmp - 1) == '\"')
+		append_double(&(*args), &(*new_word));
+}
+
 char	*expand_args_redirect(char *args, char *args_free)
 {
 	char	*new_word;
@@ -25,13 +45,7 @@ char	*expand_args_redirect(char *args, char *args_free)
 			append_char(&new_word, *args++);
 		}
 		if ((*args == '\'' || *args == '\"') && *(args + 1) != '\0')
-		{
-			args++;
-			if (*(args - 1) == '\'')
-				append_single(&args, &new_word);
-			else if (*(args - 1) == '\"')
-				append_double(&args, &new_word);
-		}
+			quote_append(&args, &new_word);
 		else if (*args == '$' && *(args + 1) == '?')
 			expand_dolleeques(&new_word, &args, args);
 		else if (*args == '$')

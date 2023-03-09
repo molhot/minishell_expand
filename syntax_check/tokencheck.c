@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/08 19:19:30 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/09 22:54:20 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	only_twowd(char	*str)
 {
 	if (*str == '\\' && (*(str + 1) == '\"' || \
-	*(str + 1) == '\'') && *(str + 2) == '\0')
+	*(str + 1) == '\'' || *(str + 1) == '\\') && *(str + 2) == '\0')
 		return (true);
 	return (false);
 }
@@ -28,8 +28,12 @@ size_t	not_escaped(char *args)
 	while (args[position] != '\0')
 	{
 		if (args[position] == '\'' || args[position] == '\"')
+		{
+			if (position == 0)
+				return (true);
 			if (position != 0 && args[position - 1] != '\\')
 				return (true);
+		}
 		args++;
 	}
 	return (false);
@@ -52,8 +56,6 @@ bool	wdcheck(char **str)
 	char	*tmp_str;
 
 	tmp_str = *str;
-	if (tmp_str[ft_strlen(*str) - 1] == '\\')
-		return (show_error(tmp_str, ft_strlen(tmp_str)));
 	if ((ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL) \
 	&& not_escaped(*str) == true)
 	{
