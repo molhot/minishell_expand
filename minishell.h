@@ -122,7 +122,7 @@ void		append_item(t_item **itr, t_item *item);
 /************* builtin command ************/
 
 bool		is_builtin(char *line);
-void		ms_cd(char *line, t_command *command);
+void		ms_cd(t_command *command);
 void		ms_env(void);
 int			ms_echo(char *line, t_command *command);
 void		ms_exit(char *line, t_command *command);
