@@ -21,12 +21,15 @@ static	void	show_manual(char **commands)
 
 void	ms_cd(char *line, t_command *command)
 {
+  struct  stat st;
+  bool    issym;
 	char	**commands;
 	char	*path;
 	char	buf[256];
 	char	*cwd;
 
 	(void)line;
+  issym = false;
 	commands = command_to_array(command);
 	if (!commands)
 		fatal_error("malloc");
@@ -35,6 +38,11 @@ void	ms_cd(char *line, t_command *command)
 		show_manual(commands);
 	path = commands[1];
 	cwd = getcwd(NULL, 0);
+  if (lstat(path, &st) == 0)
+  {
+    if(S_ISLNK(st.st_mode) != 0)
+      issym = true;
+  }
 	if (chdir(path) < 0 || cwd == NULL)
 	{
 		perror("chdir");
@@ -42,7 +50,16 @@ void	ms_cd(char *line, t_command *command)
 		free_commands(commands);
 		return ;
 	}
-	map_set(&g_env, "PWD", getcwd(buf, sizeof(buf)));
+  if (issym)
+  {
+    char *old = map_get(g_env, "PWD");
+    char *new = ft_strjoin(old, "/");
+    char *trim_path = ft_strtrim(path, "./");
+    new = ft_strjoin(new, trim_path);
+    map_set(&g_env, "PWD", new);
+  }
+  else
+	  map_set(&g_env, "PWD", getcwd(buf, sizeof(buf)));
 	free(cwd);
 	free_commands(commands);
 }
