@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/09 22:54:20 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/10 21:33:39 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,22 @@ bool	wdcheck(char **str)
 		type = **str;
 		(*str)++;
 		while (**str != type && **str != '\0')
-		{
-			if (**str == '\\')
-				(*str)++;
 			(*str)++;
-		}
 		if (**str == '\0')
 			return (show_error(tmp_str, ft_strlen(tmp_str)));
+	}
+	else
+	{
+		while (*tmp_str != 0)
+		{
+			if (*tmp_str == '\\')
+			{
+				tmp_str++;
+				if (*tmp_str == '\0')
+					return (show_error(tmp_str, ft_strlen(tmp_str)));
+			}
+			tmp_str++;
+		}
 	}
 	return (true);
 }
@@ -83,14 +92,8 @@ bool	tokwdcheck(t_token *tok)
 	{
 		str = tok->word;
 		if (only_twowd(str) != true)
-		{
-			while (*str != '\0')
-			{
-				if (false == wdcheck(&str))
-					return (false);
-				str++;
-			}
-		}
+			if (false == wdcheck(&str))
+				return (false);
 		tok = tok->next;
 	}
 	return (true);

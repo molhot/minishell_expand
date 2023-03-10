@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/10 19:16:31 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/10 20:23:30 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,8 @@ bool		is_operator(const char *s);
 bool		is_redirect(const char *s);
 bool		is_word(const char *s);
 bool		ft_isspace(char c);
+bool		consume_blank(char **rest, char *line);
+bool		startswith(const char *s, const char *keyword);
 
 /**************** utils ****************/
 
@@ -246,12 +248,14 @@ int			xclose(int fd);
 /************* errorhandle *************/
 
 void		fatal_error(const char *msg) __attribute__((noreturn));
-void		free_token(t_token *head);
 void		free_node(t_node *node);
 void		free_commands(char **commands);
 void		free_redirect(t_redirect *redirect);
 pid_t		exec_pipeline(t_node *node);
 void		env_init(t_map **env);
 bool		startswith(const char *s, const char *keyword);
+
+/**************** free ****************/
+void		free_token(t_token *head);
 
 #endif

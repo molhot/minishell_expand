@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:04:15 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/10 15:02:36 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/10 21:47:02 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ void	expand_doller_dq(char **dst, char **rest, char *p)
 	{
 		free(name);
 		append_char(dst, *(p - 1));
-		append_char(dst, *(p));
+		if (*p != '\\')
+			append_char(dst, *(p));
 		*rest = p + 1;
 		return ;
 	}

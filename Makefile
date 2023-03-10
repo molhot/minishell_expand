@@ -7,14 +7,15 @@ SRCS	=	tokenizer/tokenizer.c tokenizer/create_token.c\
 			expand/expand_simplecommand.c expand/expand_redirection.c expand/simplecommand_utils.c expand/quote_manage.c expand/doller_manage.c\
 			exec_func/exec_func.c exec_func/exec_builtin.c exec_func/pipe_func.c exec_func/redirect_file.c\
 			exec_func/exec_absolutepath.c exec_func/exec_utils.c exec_func/stashfd_helper.c exec_func/builtin_exec.c\
-			word_rolechecker/is_blank.c word_rolechecker/is_metacharacter.c word_rolechecker/is_space.c\
-			word_rolechecker/is_operator.c word_rolechecker/is_redirect.c word_rolechecker/is_word.c\
+			word_rolechecker/is_blank.c word_rolechecker/is_metacharacter.c word_rolechecker/is_space.c word_rolechecker/consume_blank.c\
+			word_rolechecker/is_operator.c word_rolechecker/is_redirect.c word_rolechecker/is_word.c word_rolechecker/startswith_keyword.c\
 			builtin_command/builtin_cd.c builtin_command/builtin_echo.c builtin_command/builtin_env.c\
 			builtin_command/builtin_exit.c builtin_command/builtin_export.c builtin_command/builtin_pwd.c\
 			builtin_command/builtin_unset.c builtin_command/command_to_array.c builtin_command/builtin_check.c\
 			builtin_command/puts_errorstring.c builtin_command/builtin_export_no.c\
 			signalhandler/sigint_handler.c\
 			map/map.c map/map_utils.c\
+			free/free_token.c\
 			env_ready.c main.c error.c ms_atoi.c
 OBJS	=	$(SRCS:%.c=%.o)
 LIBSRCS	=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isascii.c libft/ft_isalnum.c libft/ft_isprint.c\

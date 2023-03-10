@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_op_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:38:37 by user              #+#    #+#             */
-/*   Updated: 2023/02/28 21:38:01 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/10 20:46:40 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-//{"||", "&", "&&", ";", ";;", "(", ")", "|", "\n"};
 
 t_token	*operator(char **rest, char *line)
 {
