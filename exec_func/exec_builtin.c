@@ -21,7 +21,7 @@ int	do_builtin(char *line, t_command *command)
 	else if (ft_strncmp(command->args->word, "pwd", 3) == 0)
 		ms_pwd();
 	else if (ft_strncmp(command->args->word, "cd", 2) == 0)
-		ms_cd(line, command);
+		ms_cd(command);
 	else if (ft_strncmp(command->args->word, "exit", 4) == 0)
 		ms_exit(line, command);
 	else if (ft_strncmp(command->args->word, "unset", 5) == 0)
