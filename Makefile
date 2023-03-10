@@ -4,9 +4,9 @@ SRCS	=	tokenizer/tokenizer.c tokenizer/create_token.c\
 			syntax_check/syntax_check.c syntax_check/tokencheck.c\
 			parser/parser.c parser/parse_word.c parser/parse_redirect.c parser/parser_utils.c\
 			expand/expand.c expand/expand_doller.c expand/expand_appendchar.c expand/expand_specialchar.c expand/export_expand.c\
-			expand/expand_simplecommand.c expand/expand_redirection.c expand/simplecommand_utils.c\
+			expand/expand_simplecommand.c expand/expand_redirection.c expand/simplecommand_utils.c expand/quote_manage.c expand/doller_manage.c\
 			exec_func/exec_func.c exec_func/exec_builtin.c exec_func/pipe_func.c exec_func/redirect_file.c\
-			exec_func/exec_absolutepath.c exec_func/exec_utils.c exec_func/stashfd_helper.c\
+			exec_func/exec_absolutepath.c exec_func/exec_utils.c exec_func/stashfd_helper.c exec_func/builtin_exec.c\
 			word_rolechecker/is_blank.c word_rolechecker/is_metacharacter.c word_rolechecker/is_space.c\
 			word_rolechecker/is_operator.c word_rolechecker/is_redirect.c word_rolechecker/is_word.c\
 			builtin_command/builtin_cd.c builtin_command/builtin_echo.c builtin_command/builtin_env.c\
@@ -28,7 +28,7 @@ LIBSRCS	=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isascii.c libft/ft_isal
 			libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c libft/ft_lstlast.c libft/ft_lstadd_back.c\
 			libft/ft_lstclear.c libft/ft_lstiter.c libft/ft_lstmap.c libft/ft_strndup.c
 LIBOBJ = $(LIBSRCS:%.c=%.o)
-CC  	=	gcc
+CC  	=	gcc -g
 CFLAGS	=	-Wall -Werror -Wextra
 RLDIR	=	$(shell brew --prefix readline)
 SANI	= -fsanitize=address
@@ -37,7 +37,7 @@ all:$(NAME)
 
 $(NAME):$(OBJS) $(LIBOBJ)
 	- make -C libft
-	$(CC) $(CFLAGS) $(OBJS) $(SANI) -Llibft -L$(RLDIR)/lib -I$(RLDIR)/include -o $(NAME) -lreadline -lft
+	$(CC) $(CFLAGS) $(OBJS) -Llibft -L$(RLDIR)/lib -I$(RLDIR)/include -o $(NAME) -lreadline -lft
 
 $(OBJS): %.o : %.c
 	$(CC) $(CFLAGS) -I$(RLDIR)/include -c  $< -o $@ 

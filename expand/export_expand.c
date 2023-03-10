@@ -24,20 +24,25 @@ void	export_argsremake(t_token *token)
 	char	*sub;
 	char	*free_sub;
 	char	*dup;
+	size_t	position;
+	size_t	last;
 
+	position = 0;
 	while (token != NULL)
 	{
 		dup = NULL;
 		sub = token->word;
 		free_sub = sub;
-		while (*sub != '\0')
+		last = ft_strlen(free_sub);
+		while (*sub != '\0' && sub != NULL)
 		{
-			if (*sub == '\\' && sp_wd_ch(*(sub + 1)) == true)
+			if (position != last && *sub == '\\' && sp_wd_ch(*(sub + 1)) == true)
 				append_char(&dup, *sub++);
-			else if (*(sub - 1) != '\\' && sp_wd_ch(*sub) == true)
+			else if (sub != free_sub && *(sub - 1) != '\\' && sp_wd_ch(*sub) == true)
 				append_char(&dup, '\\');
 			append_char(&dup, *sub);
 			sub++;
+			position++;
 		}
 		token->word = dup;
 		free(free_sub);
@@ -47,12 +52,8 @@ void	export_argsremake(t_token *token)
 
 void	append_double_export(char **args, char **new)
 {
-	bool	noaction;
-
-	noaction = true;
 	while (**args != '\"')
 	{
-		noaction = false;
 		if (**args == '$' && *(*args + 1) != '\"')
 			expand_doller_dq(&(*new), &(*args), *args);
 		else
@@ -66,8 +67,6 @@ void	append_double_export(char **args, char **new)
 			(*args)++;
 		}
 	}
-	if (noaction == true)
-		*new = ft_strdup("");
 	(*args)++;
 }
 
@@ -81,20 +80,20 @@ void	append_double_export(char **args, char **new)
 // else if (*args == '$')
 // 	expand_doller(&new_word, &args, args);
 
-static void	switch_doller(char **new_word, char **args)
-{
-	if (**args == '$' && *(*args + 1) == '\0')
-	{
-		append_char(&(*new_word), **args);
-		(*args)++;
-	}
-	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
-		(*args)++;
-	else if (**args == '$' && *(*args + 1) == '?')
-		expand_dolleeques(&(*new_word), &(*args), *args);
-	else if (**args == '$')
-		expand_doller(&(*new_word), &(*args), *args);
-}
+// void	switch_doller_inexpandquote(char **new_word, char **args)
+// {
+// 	if (**args == '$' && *(*args + 1) == '\0')
+// 	{
+// 		append_char(&(*new_word), **args);
+// 		(*args)++;
+// 	}
+// 	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
+// 		(*args)++;
+// 	else if (**args == '$' && *(*args + 1) == '?')
+// 		expand_dolleeques(&(*new_word), &(*args), *args);
+// 	else if (**args == '$')
+// 		expand_doller(&(*new_word), &(*args), *args);
+// }
 
 char	*expand_args_expote(char *args, char *args_free)
 {
@@ -117,7 +116,7 @@ char	*expand_args_expote(char *args, char *args_free)
 				append_double_export(&args, &new_word);
 		}
 		else if (*args == '$')
-			switch_doller(&new_word, &args);
+			switch_doller_inexpandquote(&new_word, &args);
 		else
 			append_char(&new_word, *args++);
 	}

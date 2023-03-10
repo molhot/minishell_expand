@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_redirect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:22:25 by user              #+#    #+#             */
-/*   Updated: 2023/02/22 22:23:44 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/10 14:33:59 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ bool	parse_redirect(t_redirect **redirect, t_token **tok)
 		(*redirect)->type = OUT;
 	if ((*tok)->next->kind == TK_WORD)
 		(*redirect)->file_path = ft_strdup((*tok)->next->word);
-	else
-		fatal_error("redirection end or not?\n");
 	return (true);
 }
 

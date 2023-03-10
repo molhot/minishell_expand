@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/03 20:14:32 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/10 19:16:31 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,8 @@ void		remake_token(t_token *token, t_token *re_token);
 void		split_tokenword(t_token **token, t_token **re_token);
 void		expand_export(t_token *token);
 void		export_argsremake(t_token *token);
+void		quote_append_indoller(char type, char **new, char **args);
+void		switch_doller_inexpandquote(char **new_word, char **args);
 
 /************* signal handler ************/
 
@@ -214,6 +216,7 @@ char		*searchpath(const char *filename);
 char		*accessok_file(char *path);
 int			stashfd(int fd);
 void		aray_free(char **argv);
+void		builtin_exec(t_node *node);
 
 /************* role checker ************/
 
