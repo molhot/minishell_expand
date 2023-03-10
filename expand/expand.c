@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:37:31 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/05 14:48:05 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/10 23:47:08 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ void	expand_redirect(t_redirect *redirect)
 			redirect->file_path = expand_args(redirect->file_path, \
 			redirect->file_path);
 		redirect = redirect->next;
+	}
+}
+
+void	expand_export(t_token *token)
+{
+	while (token != NULL)
+	{
+		if (token->word != NULL)
+			token->word = expand_args_expote(token->word, token->word);
+		token = token->next;
 	}
 }
 

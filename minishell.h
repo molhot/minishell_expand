@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/10 20:23:30 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 00:29:58 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ char		*get_name(char *name_and_value);
 bool		tokcheck(t_token *tok);
 bool		tokwdcheck(t_token *tok);
 bool		wdcheck(char **str);
+bool		wd_check_inquote(char **str, char *tmp_str);
 
 /*************** torkenizer **************/
 
@@ -155,6 +156,7 @@ t_redirect	*tok_to_redirect_f(bool *flag, t_node *node, t_token **tok);
 t_redirect	*tok_to_redirect(t_redirect *redirect, t_token **tok);
 t_token		*word(char **rest, char *line);
 t_token		*operator(char **rest, char *line);
+bool		show_error(char *s, size_t charlen);
 
 /***************** parser ****************/
 
@@ -193,6 +195,8 @@ void		expand_export(t_token *token);
 void		export_argsremake(t_token *token);
 void		quote_append_indoller(char type, char **new, char **args);
 void		switch_doller_inexpandquote(char **new_word, char **args);
+char		*expand_args_expote(char *args, char *args_free);
+void		switch_doller(char **new_word, char **args);
 
 /************* signal handler ************/
 

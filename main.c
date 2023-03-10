@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:27:43 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/10 20:10:15 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 00:26:55 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	readline_execpart(char *line)
 		free_node(node);
 }
 
-static void	exit_f()
+static void	exit_f(void)
 {
 	//printf("exit\n");
 	exit(0);

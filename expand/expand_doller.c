@@ -6,51 +6,26 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:04:15 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/10 21:47:02 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 00:29:45 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// static void	quote_append(char type, char **new, char **args)
+// void	switch_doller(char **new_word, char **args)
 // {
-// 	append_char(&(*new), **args);
-// 	(*args)++;
-// 	if (**args == '\0')
-// 		return ;
-// 	while (**args != type)
+// 	if (**args == '$' && *(*args + 1) == '\0')
 // 	{
-// 		append_char(&(*new), **args);
+// 		append_char(&(*new_word), **args);
 // 		(*args)++;
 // 	}
-// 	append_char(&(*new), **args);
-// 	(*args)++;
+// 	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
+// 		(*args)++;
+// 	else if (**args == '$' && *(*args + 1) == '?')
+// 		expand_dolleeques(&(*new_word), &(*args), *args);
+// 	else if (**args == '$')
+// 		expand_doller(&(*new_word), &(*args), *args);
 // }
-
-// else if (*args == '$' && *(args + 1) == '\0')
-// 	append_char(&new_word, *args++);
-// else if (*args == '$' && (*(args + 1) == '\'' 
-// || *(args + 1) == '\"'))
-// 	args++;
-// else if (*args == '$' && *(args + 1) == '?')
-// 	expand_dolleeques(&new_word, &args, args);
-// else if (*args == '$')
-// 	expand_doller(&new_word, &args, args);
-
-static void	switch_doller(char **new_word, char **args)
-{
-	if (**args == '$' && *(*args + 1) == '\0')
-	{
-		append_char(&(*new_word), **args);
-		(*args)++;
-	}
-	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
-		(*args)++;
-	else if (**args == '$' && *(*args + 1) == '?')
-		expand_dolleeques(&(*new_word), &(*args), *args);
-	else if (**args == '$')
-		expand_doller(&(*new_word), &(*args), *args);
-}
 
 char	*expand_args_doller(char *args)
 {
@@ -114,6 +89,15 @@ void	expand_doller(char **dst, char **rest, char *p)
 	*rest = p;
 }
 
+static void	not_expanded(char *name, char **dst, char **rest, char *p)
+{
+	free(name);
+	append_char(dst, *(p - 1));
+	if (*p != '\\')
+		append_char(dst, *(p));
+	*rest = p + 1;
+}
+
 void	expand_doller_dq(char **dst, char **rest, char *p)
 {
 	char	*name;
@@ -124,14 +108,7 @@ void	expand_doller_dq(char **dst, char **rest, char *p)
 		fatal_error("calloc");
 	p++;
 	if (ft_isalpha(*p) != 1 && *p != '_')
-	{
-		free(name);
-		append_char(dst, *(p - 1));
-		if (*p != '\\')
-			append_char(dst, *(p));
-		*rest = p + 1;
-		return ;
-	}
+		return (not_expanded(name, &(*dst), &(*rest), p));
 	append_char(&name,*p++);
 	while ((ft_isalpha(*p) != 0 || *p == '_' \
 	|| ft_isdigit(*p) != 0) && *p != '\"')

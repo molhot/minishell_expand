@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/10 21:33:39 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 00:18:55 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	not_escaped(char *args)
 	return (false);
 }
 
-static bool	show_error(char *s, size_t charlen)
+bool	show_error(char *s, size_t charlen)
 {
 	if (s[charlen - 1] == '\\')
 	{
@@ -52,22 +52,12 @@ static bool	show_error(char *s, size_t charlen)
 
 bool	wdcheck(char **str)
 {
-	char	type;
 	char	*tmp_str;
 
 	tmp_str = *str;
 	if ((ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL) \
 	&& not_escaped(*str) == true)
-	{
-		while (**str != '\'' && **str != '\"')
-			(*str)++;
-		type = **str;
-		(*str)++;
-		while (**str != type && **str != '\0')
-			(*str)++;
-		if (**str == '\0')
-			return (show_error(tmp_str, ft_strlen(tmp_str)));
-	}
+		return (wd_check_inquote(&(*str), tmp_str));
 	else
 	{
 		while (*tmp_str != 0)
