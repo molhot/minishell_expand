@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/03 20:14:32 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 19:30:26 by kazuki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ void		remake_token(t_token *token, t_token *re_token);
 void		split_tokenword(t_token **token, t_token **re_token);
 void		expand_export(t_token *token);
 void		export_argsremake(t_token *token);
+bool		is_special(char c);
 
 /************* signal handler ************/
 

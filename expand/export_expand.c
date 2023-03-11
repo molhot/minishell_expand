@@ -12,13 +12,6 @@
 
 #include "../minishell.h"
 
-bool	sp_wd_ch(char c)
-{
-	if (c == '"' || c == '$' || c == '\\')
-		return (true);
-	return (false);
-}
-
 void	export_argsremake(t_token *token)
 {
 	char	*sub;
@@ -32,9 +25,9 @@ void	export_argsremake(t_token *token)
 		free_sub = sub;
 		while (*sub != '\0')
 		{
-			if (*sub == '\\' && sp_wd_ch(*(sub + 1)) == true)
+			if (*sub == '\\' && is_special(*(sub + 1)) == true)
 				append_char(&dup, *sub++);
-			else if (*(sub - 1) != '\\' && sp_wd_ch(*sub) == true)
+			else if (*(sub - 1) != '\\' && is_special(*sub) == true)
 				append_char(&dup, '\\');
 			append_char(&dup, *sub);
 			sub++;
@@ -70,16 +63,6 @@ void	append_double_export(char **args, char **new)
 		*new = ft_strdup("");
 	(*args)++;
 }
-
-// else if (*args == '$' && *(args + 1) == '\0')
-// 	append_char(&new_word, *args++);
-// else if (*args == '$' && (*(args + 1) == '\'' 
-// || *(args + 1) == '\"'))
-// 	args++;
-// else if (*args == '$' && *(args + 1) == '?')
-// 	expand_dolleeques(&new_word, &args, args);
-// else if (*args == '$')
-// 	expand_doller(&new_word, &args, args);
 
 static void	switch_doller(char **new_word, char **args)
 {

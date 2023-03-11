@@ -75,3 +75,171 @@
 > PULSE_SERVER=/mnt/wslg/PulseServer
 > hoge=$PATH$PATH$PATH$
 > _=./minishell
+0a1,2
+> minishell: adkldjaljd: command not found :x
+> minishell: adkldjaljd: command not found :x
+0a1,4
+> minishell: adkldjaljddamwa: command not found :x
+> minishell: adnlwajdawkd: command not found :x
+> minishell: adkldjaljddamwa: command not found :x
+> minishell: adnlwajdawkd: command not found :x
+0a1
+> -minishell: syntax error near unexpected token `newline'
+0a1
+> -minishell: syntax error near unexpected token 		`|'
+0a1
+> -minishell: syntax error near unexpected token 		`<'
+0a1
+> -minishell: syntax error near unexpected token 		`<'
+0a1,2
+> minishell: hogehoge: command not found :x
+> minishell: hogehoge: command not found :x
+0a1,2
+> minishell: $PATH: ambiguous redirect
+> minishell: $PATH: ambiguous redirect
+1c1
+< 9377hoge
+---
+> $$hoge
+1c1
+< $PATH$PATH$PATH$
+---
+> /Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/kazuki/.cargo/bin:/usr/X11/bin:/usr/X11R6/bin:/usr/local/Homebrew/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin:/Users/kazuki/fzf/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/kazuki/.cargo/bin:/usr/X11/bin:/usr/X11R6/bin:/usr/local/Homebrew/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin:/Users/kazuki/fzf/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/kazuki/.cargo/bin:/usr/X11/bin:/usr/X11R6/bin:/usr/local/Homebrew/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin:/Users/kazuki/fzf/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin$
+1c1
+< $PATH$
+---
+> /Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/kazuki/.cargo/bin:/usr/X11/bin:/usr/X11R6/bin:/usr/local/Homebrew/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin:/Users/kazuki/fzf/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin$
+1c1
+< 5
+---
+> 4
+4d3
+< TMUX_TMPDIR=/tmp
+6,7c5
+< SHELL=/bin/zsh
+< TERM=xterm-256color
+---
+> TMUX_TMPDIR=/tmp
+9c7,8
+< TMPDIR=/var/folders/x1/sc8bb1pj6gn72jm4b_jq37ww0000gn/T/
+---
+> TERM=xterm-256color
+> SHELL=/bin/zsh
+10a10
+> TMPDIR=/var/folders/x1/sc8bb1pj6gn72jm4b_jq37ww0000gn/T/
+13,14d12
+< MallocNanoZone=0
+< ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+15a14,15
+> ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+> MallocNanoZone=0
+18d17
+< USER=kazuki
+19a19
+> USER=kazuki
+25d24
+< _=/usr/bin/env
+27d25
+< __CFBundleIdentifier=com.microsoft.VSCode
+28a27
+> __CFBundleIdentifier=com.microsoft.VSCode
+32d30
+< XPC_FLAGS=0x0
+34c32
+< RBENV_SHELL=zsh
+---
+> XPC_FLAGS=0x0
+35a34
+> RBENV_SHELL=zsh
+38,39d36
+< HOME=/Users/kazuki
+< SHLVL=5
+40a38,39
+> SHLVL=4
+> HOME=/Users/kazuki
+45d43
+< LOGNAME=kazuki
+46a45
+> LOGNAME=kazuki
+49d47
+< GOPATH=/Users/kazuki/go
+51,53c49
+< INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+< HOMEBREW_CELLAR=/opt/homebrew/Cellar
+< GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+---
+> GOPATH=/Users/kazuki/go
+55c51,53
+< DISPLAY=/private/tmp/com.apple.launchd.RykoIEmVWc/org.xquartz:0
+---
+> GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+> HOMEBREW_CELLAR=/opt/homebrew/Cellar
+> INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+57c55
+< SECURITYSESSIONID=186b2
+---
+> DISPLAY=/private/tmp/com.apple.launchd.RykoIEmVWc/org.xquartz:0
+58a57
+> SECURITYSESSIONID=186b2
+59a59
+> _=./minishell
+0a1,59
+> NVM_INC=/Users/kazuki/.nvm/versions/node/v16.14.2/include/node
+> MANPATH=/Users/kazuki/.nvm/versions/node/v16.14.2/share/man:/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/X11/share/man:/Users/kazuki/.nvm/versions/node/v16.14.2/share/man:/opt/homebrew/share/man:
+> TERM_PROGRAM=vscode
+> NVM_CD_FLAGS=-q
+> TMUX_TMPDIR=/tmp
+> HOMEBREW_TEMP=/tmp/kazuki/Homebrew/Temp
+> TERM=xterm-256color
+> SHELL=/bin/zsh
+> HOMEBREW_REPOSITORY=/opt/homebrew
+> TMPDIR=/var/folders/x1/sc8bb1pj6gn72jm4b_jq37ww0000gn/T/
+> GOBIN=/Users/kazuki/go/bin
+> TERM_PROGRAM_VERSION=1.75.1
+> ZDOTDIR=/Users/kazuki
+> ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+> MallocNanoZone=0
+> TERM_SESSION_ID=w0t0p1:4357C8D2-78BD-47F2-81CA-CE1AD4AFD91B
+> RUBY_CFLAGS=-Wno-error=implicit-function-declaration
+> NVM_DIR=/Users/kazuki/.nvm
+> USER=kazuki
+> COMMAND_MODE=unix2003
+> SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.GDJkNQbT1u/Listeners
+> __CF_USER_TEXT_ENCODING=0x1F5:0x1:0xE
+> HOMEBREW_CACHE=/tmp/kazuki/Homebrew/Caches
+> PATH=/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/kazuki/.rbenv/shims:/Users/kazuki/.rbenv/bin:/Users/kazuki/.brew/bin:/Users/kazuki/.nvm/versions/node/v16.14.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/kazuki/.cargo/bin:/usr/X11/bin:/usr/X11R6/bin:/usr/local/Homebrew/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin:/Users/kazuki/fzf/bin:/Users/kazuki/Library/Application Support/JetBrains/Toolbox/scripts:/Users/kazuki/.local/bin:/Users/kazuki/Library/Python/3.9/bin:/Users/kazuki/go/bin
+> LaunchInstanceID=4D151FE3-4832-4F5F-BC6F-2CD02237CBD5
+> USER_ZDOTDIR=/Users/kazuki
+> __CFBundleIdentifier=com.microsoft.VSCode
+> PWD=/Users/kazuki/42tokyo/minishell
+> LANG=ja_JP.UTF-8
+> ITERM_PROFILE=Default
+> VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+> XPC_FLAGS=0x0
+> hogemaru=$PATH$
+> RBENV_SHELL=zsh
+> XPC_SERVICE_NAME=0
+> VSCODE_INJECTION=1
+> COLORFGBG=15;0
+> SHLVL=4
+> HOME=/Users/kazuki
+> VSCODE_GIT_ASKPASS_MAIN=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
+> LC_TERMINAL_VERSION=3.4.16
+> HOMEBREW_PREFIX=/opt/homebrew
+> ITERM_SESSION_ID=w0t0p1:4357C8D2-78BD-47F2-81CA-CE1AD4AFD91B
+> hoge=$PATH$PATH$PATH$
+> LOGNAME=kazuki
+> CVS_RSH=ssh
+> VSCODE_GIT_IPC_HANDLE=/var/folders/x1/sc8bb1pj6gn72jm4b_jq37ww0000gn/T/vscode-git-2234555ab8.sock
+> NVM_BIN=/Users/kazuki/.nvm/versions/node/v16.14.2/bin
+> GOPATH=/Users/kazuki/go
+> VSCODE_GIT_ASKPASS_NODE=/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)
+> GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+> HOMEBREW_CELLAR=/opt/homebrew/Cellar
+> INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+> LC_TERMINAL=iTerm2
+> DISPLAY=/private/tmp/com.apple.launchd.RykoIEmVWc/org.xquartz:0
+> RSYNC_RSH=ssh
+> SECURITYSESSIONID=186b2
+> COLORTERM=truecolor
+> _=./minishell
