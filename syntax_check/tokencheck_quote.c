@@ -16,13 +16,24 @@ bool	wd_check_inquote(char **str, char *tmp_str)
 {
 	char	type;
 
-	while (**str != '\'' && **str != '\"')
+	while (**str != '\'' && **str != '\"' && **str != '\0')
+	{
+		if (**str == '\\')
+			(*str)++;
 		(*str)++;
+	}
+	if (**str == '\0')
+		return (true);
 	type = **str;
 	(*str)++;
 	while (**str != type && **str != '\0')
 		(*str)++;
 	if (**str == '\0')
 		return (show_error(tmp_str, ft_strlen(tmp_str)));
+	if (**str != '\0' && (ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL))
+	{
+		(*str)++;
+		return (wd_check_inquote(&(*str), *str));
+	}
 	return (true);
 }
