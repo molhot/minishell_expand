@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_doller.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:04:15 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/11 00:29:45 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/11 13:43:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-// void	switch_doller(char **new_word, char **args)
-// {
-// 	if (**args == '$' && *(*args + 1) == '\0')
-// 	{
-// 		append_char(&(*new_word), **args);
-// 		(*args)++;
-// 	}
-// 	else if (**args == '$' && (*(*args + 1) == '\'' || *(*args + 1) == '\"'))
-// 		(*args)++;
-// 	else if (**args == '$' && *(*args + 1) == '?')
-// 		expand_dolleeques(&(*new_word), &(*args), *args);
-// 	else if (**args == '$')
-// 		expand_doller(&(*new_word), &(*args), *args);
-// }
 
 char	*expand_args_doller(char *args)
 {
@@ -55,6 +40,11 @@ void	not_expnad(char **dst, char **rest, char *p)
 	if (*p == '\\')
 	{
 		append_char(dst, *(p - 1));
+		*rest = p;
+		return ;
+	}
+	if (*p == '\'' || *p == '\"')
+	{
 		*rest = p;
 		return ;
 	}

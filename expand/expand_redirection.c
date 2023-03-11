@@ -98,6 +98,8 @@ void	specialparam_check(t_redirect *redirect)
 			}
 			else if (*args == '$' && *(args + 1) == '?')
 				args = args + 2;
+			else if (*args == '$' && ((*(args + 1) == '\'') || (*(args + 1) == '\"')))
+				args++;
 			else if (*args == '$')
 				check_doller(&args, args, redirect);
 			else
