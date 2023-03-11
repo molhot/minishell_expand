@@ -12,28 +12,32 @@
 
 #include "../minishell.h"
 
+static void	after_backslush(char **str)
+{
+	if (**str == '\\')
+		(*str)++;
+	(*str)++;
+}
+
 bool	wd_check_inquote(char **str, char *tmp_str)
 {
 	char	type;
 
-	while (**str != '\'' && **str != '\"' && **str != '\0')
+	while (**str != '\0')
 	{
-		if (**str == '\\')
-			(*str)++;
+		while (**str != '\'' && **str != '\"')
+		{
+			if (**str == '\0')
+				return (true);
+			after_backslush(&(*str));
+		}
+		type = **str;
 		(*str)++;
-	}
-	if (**str == '\0')
-		return (true);
-	type = **str;
-	(*str)++;
-	while (**str != type && **str != '\0')
+		while (**str != type && **str != '\0')
+			after_backslush(&(*str));
+		if (**str == '\0')
+			return (show_error(tmp_str, ft_strlen(tmp_str)));
 		(*str)++;
-	if (**str == '\0')
-		return (show_error(tmp_str, ft_strlen(tmp_str)));
-	if (**str != '\0' && (ft_strchr(*str, '\'') != NULL || ft_strchr(*str, '\"') != NULL))
-	{
-		(*str)++;
-		return (wd_check_inquote(&(*str), *str));
 	}
 	return (true);
 }

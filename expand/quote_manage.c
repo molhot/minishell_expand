@@ -20,6 +20,11 @@ void	quote_append_indoller(char type, char **new, char **args)
 		return ;
 	while (**args != type)
 	{
+		if (**args == '\\')
+		{
+			append_char(&(*new), **args);
+			(*args)++;
+		}
 		append_char(&(*new), **args);
 		(*args)++;
 	}

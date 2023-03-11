@@ -63,7 +63,11 @@ static	bool	check_tokenwdblank(char *string)
 			type = *string;
 			string++;
 			while (*string != type)
+			{
+				if (*string == '\\')
+					string++;
 				string++;
+			}
 			string++;
 		}
 		else
