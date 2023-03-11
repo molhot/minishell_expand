@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/12 02:00:47 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/12 02:08:54 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,11 +194,10 @@ void		split_tokenword(t_token **token, t_token **re_token);
 void		expand_export(t_token *token);
 void		export_argsremake(t_token *token);
 bool		is_special(char c);
-
-// void		quote_append_indoller(char type, char **new, char **args);
-// void		switch_doller_inexpandquote(char **new_word, char **args);
-// char		*expand_args_expote(char *args, char *args_free);
-// void		switch_doller(char **new_word, char **args);
+void		quote_append_indoller(char type, char **new, char **args);
+void		switch_doller_inexpandquote(char **new_word, char **args);
+char		*expand_args_expote(char *args, char *args_free);
+//void		switch_doller(char **new_word, char **args);
 
 /************* signal handler ************/
 
