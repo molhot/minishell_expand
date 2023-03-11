@@ -6,34 +6,34 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 01:04:15 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/12 03:03:57 by user             ###   ########.fr       */
+/*   Updated: 2023/03/12 03:10:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*expand_args_doller(char *args)
-{
-	char	*new_word;
+// char	*expand_args_doller(char *args)
+// {
+// 	char	*new_word;
 
-	new_word = NULL;
-	while (*args != '\0')
-	{
-		if (*args == '\\')
-		{
-			append_char(&new_word, *args++);
-			if (*args != '\0')
-				append_char(&new_word, *args++);
-		}
-		else if (*args == '\'' || *args == '\"')
-			quote_append_indoller(*args, &new_word, &args);
-		else if (*args == '$')
-			switch_doller(&new_word, &args);
-		else
-			append_char(&new_word, *args++);
-	}
-	return (new_word);
-}
+// 	new_word = NULL;
+// 	while (*args != '\0')
+// 	{
+// 		if (*args == '\\')
+// 		{
+// 			append_char(&new_word, *args++);
+// 			if (*args != '\0')
+// 				append_char(&new_word, *args++);
+// 		}
+// 		else if (*args == '\'' || *args == '\"')
+// 			quote_append_indoller(*args, &new_word, &args);
+// 		else if (*args == '$')
+// 			switch_doller(&new_word, &args);
+// 		else
+// 			append_char(&new_word, *args++);
+// 	}
+// 	return (new_word);
+// }
 
 void	not_expnad(char **dst, char **rest, char *p)
 {
