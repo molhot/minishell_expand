@@ -38,7 +38,7 @@ all:$(NAME)
 
 $(NAME):$(OBJS) $(LIBOBJ)
 	- make -C libft
-	$(CC) $(CFLAGS) $(OBJS) -Llibft -L$(RLDIR)/lib -I$(RLDIR)/include -o $(NAME) -lreadline -lft
+	$(CC) $(CFLAGS) $(OBJS) $(SANI) -Llibft -L$(RLDIR)/lib -I$(RLDIR)/include -o $(NAME) -lreadline -lft
 
 $(OBJS): %.o : %.c
 	$(CC) $(CFLAGS) -I$(RLDIR)/include -c  $< -o $@ 

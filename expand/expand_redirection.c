@@ -12,14 +12,6 @@
 
 #include "../minishell.h"
 
-// {
-		// 	args++;
-		// 	if (*(args - 1) == '\'')
-		// 		append_single(&args, &new_word);
-		// 	else if (*(args - 1) == '\"')
-		// 		append_double(&args, &new_word);
-		// }
-
 void	quote_append(char **args, char **new_word)
 {
 	char	*tmp;
@@ -94,7 +86,9 @@ void	specialparam_check(t_redirect *redirect)
 		args = redirect->file_path;
 		while (*args != '\0')
 		{
-			if (*args == '\'' || *args == '\"')
+			if (*args == '\\')
+				args = args + 2;
+			else if (*args == '\'' || *args == '\"')
 			{
 				type = *args;
 				args++;
