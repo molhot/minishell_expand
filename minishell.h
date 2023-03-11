@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kazuki <kazuki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:28:10 by user              #+#    #+#             */
-/*   Updated: 2023/03/11 19:30:26 by kazuki           ###   ########.fr       */
+/*   Updated: 2023/03/12 02:00:47 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void		append_item(t_item **itr, t_item *item);
 /************* builtin command ************/
 
 bool		is_builtin(char *line);
-void		ms_cd(char *line, t_command *command);
+void		ms_cd(t_command *command);
 void		ms_env(void);
 int			ms_echo(char *line, t_command *command);
 void		ms_exit(char *line, t_command *command);
@@ -143,6 +143,7 @@ char		*get_name(char *name_and_value);
 bool		tokcheck(t_token *tok);
 bool		tokwdcheck(t_token *tok);
 bool		wdcheck(char **str);
+bool		wd_check_inquote(char **str, char *tmp_str);
 
 /*************** torkenizer **************/
 
@@ -155,6 +156,7 @@ t_redirect	*tok_to_redirect_f(bool *flag, t_node *node, t_token **tok);
 t_redirect	*tok_to_redirect(t_redirect *redirect, t_token **tok);
 t_token		*word(char **rest, char *line);
 t_token		*operator(char **rest, char *line);
+bool		show_error(char *s, size_t charlen);
 
 /***************** parser ****************/
 
@@ -193,6 +195,11 @@ void		expand_export(t_token *token);
 void		export_argsremake(t_token *token);
 bool		is_special(char c);
 
+// void		quote_append_indoller(char type, char **new, char **args);
+// void		switch_doller_inexpandquote(char **new_word, char **args);
+// char		*expand_args_expote(char *args, char *args_free);
+// void		switch_doller(char **new_word, char **args);
+
 /************* signal handler ************/
 
 void		sigint_handler(int sig);
@@ -215,6 +222,7 @@ char		*searchpath(const char *filename);
 char		*accessok_file(char *path);
 int			stashfd(int fd);
 void		aray_free(char **argv);
+void		builtin_exec(t_node *node);
 
 /************* role checker ************/
 
@@ -224,6 +232,8 @@ bool		is_operator(const char *s);
 bool		is_redirect(const char *s);
 bool		is_word(const char *s);
 bool		ft_isspace(char c);
+bool		consume_blank(char **rest, char *line);
+bool		startswith(const char *s, const char *keyword);
 
 /**************** utils ****************/
 
@@ -244,12 +254,14 @@ int			xclose(int fd);
 /************* errorhandle *************/
 
 void		fatal_error(const char *msg) __attribute__((noreturn));
-void		free_token(t_token *head);
 void		free_node(t_node *node);
 void		free_commands(char **commands);
 void		free_redirect(t_redirect *redirect);
 pid_t		exec_pipeline(t_node *node);
 void		env_init(t_map **env);
 bool		startswith(const char *s, const char *keyword);
+
+/**************** free ****************/
+void		free_token(t_token *head);
 
 #endif

@@ -1,7 +1,7 @@
 NAME	=	minishell
 SRCS	=	tokenizer/tokenizer.c tokenizer/create_token.c\
 			tokenizer/make_op_token.c tokenizer/make_redirect_token.c tokenizer/make_wd_token.c\
-			syntax_check/syntax_check.c syntax_check/tokencheck.c\
+			syntax_check/syntax_check.c syntax_check/tokencheck.c syntax_check/tokencheck_quote.c\
 			parser/parser.c parser/parse_word.c parser/parse_redirect.c parser/parser_utils.c\
 			expand/expand.c expand/expand_doller.c expand/expand_args_doller.c expand/expand_appendchar.c expand/expand_specialchar.c expand/export_expand.c\
 			expand/expand_simplecommand.c expand/expand_redirection.c expand/simplecommand_utils.c expand/is_special.c\
@@ -15,6 +15,7 @@ SRCS	=	tokenizer/tokenizer.c tokenizer/create_token.c\
 			builtin_command/puts_errorstring.c builtin_command/builtin_export_no.c\
 			signalhandler/sigint_handler.c\
 			map/map.c map/map_utils.c\
+			free/free_token.c\
 			env_ready.c main.c error.c ms_atoi.c
 OBJS	=	$(SRCS:%.c=%.o)
 LIBSRCS	=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isascii.c libft/ft_isalnum.c libft/ft_isprint.c\
@@ -28,7 +29,7 @@ LIBSRCS	=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isascii.c libft/ft_isal
 			libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c libft/ft_lstlast.c libft/ft_lstadd_back.c\
 			libft/ft_lstclear.c libft/ft_lstiter.c libft/ft_lstmap.c libft/ft_strndup.c
 LIBOBJ = $(LIBSRCS:%.c=%.o)
-CC  	=	gcc
+CC  	=	gcc -g
 CFLAGS	=	-Wall -Werror -Wextra
 RLDIR	=	$(shell brew --prefix readline)
 SANI	= -fsanitize=address
